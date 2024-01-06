@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_example/models/food.dart';
 import 'package:food_example/widgets/food_card.dart';
+import 'package:food_example/widgets/quick_screen_appbar.dart';
 
 class QuickFoodsScreen extends StatefulWidget {
   const QuickFoodsScreen({super.key});
@@ -21,6 +22,7 @@ class _QuickFoodsScreenState extends State<QuickFoodsScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                const QuickScreenAppbar(),
                 const SizedBox(height: 20),
                 GridView.builder(
                   shrinkWrap: true,
