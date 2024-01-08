@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_example/models/food.dart';
+import 'package:food_example/screens/quick_foods_screen.dart';
+import 'package:food_example/screens/recipe_screen.dart';
 import 'package:iconsax/iconsax.dart';
 
 class QuickAndFastList extends StatelessWidget {
@@ -10,15 +12,24 @@ class QuickAndFastList extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Row(
+        Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
+            const Text(
               "Quick & Fast",
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
+            ),
+            TextButton(
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const QuickFoodsScreen(),
+                ),
+              ),
+              child: const Text("View all"),
             ),
           ],
         ),
@@ -29,6 +40,12 @@ class QuickAndFastList extends StatelessWidget {
             children: List.generate(
               foods.length,
               (index) => GestureDetector(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => RecipeScreen(food: foods[index]),
+                  ),
+                ),
                 child: Container(
                   margin: const EdgeInsets.only(right: 10),
                   width: 200,
@@ -62,7 +79,7 @@ class QuickAndFastList extends StatelessWidget {
                               const Icon(
                                 Iconsax.flash_1,
                                 size: 18,
-                                color: Color.fromARGB(255, 255, 255, 255),
+                                color: Colors.grey,
                               ),
                               Text(
                                 "${foods[index].cal} Cal",
